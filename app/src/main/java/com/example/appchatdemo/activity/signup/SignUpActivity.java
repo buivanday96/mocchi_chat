@@ -14,7 +14,6 @@ import androidx.core.content.ContextCompat;
 
 import com.example.appchatdemo.R;
 import com.example.appchatdemo.Utils.AnimUtils;
-import com.example.appchatdemo.activity.login.LoginActivity;
 
 import java.util.Objects;
 
@@ -123,6 +122,9 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
 
     @Override
     public void signUpSuccess() {
+        //save share pref email & pwd
+        //show dialog success
+        //close dialog goto sign in
 
     }
 
@@ -130,18 +132,21 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
     public void validEmail() {
         showToast("Sign Up fail ! Please Try Again Later !");
         AnimUtils.animShake(etUserName,this);
+        etUserName.setBackground(ContextCompat.getDrawable(this, R.drawable.invalidated_input_field));
     }
 
     @Override
     public void validPwd() {
         showToast("Password is valid");
         AnimUtils.animShake(etPwd,this);
+        etPwd.setBackground(ContextCompat.getDrawable(this, R.drawable.invalidated_input_field));
     }
 
     @Override
     public void validRePwd() {
         showToast("Re-pwd don't match pwd");
         AnimUtils.animShake(etRePwd,this);
+        etRePwd.setBackground(ContextCompat.getDrawable(this, R.drawable.invalidated_input_field));
     }
 
     @Override

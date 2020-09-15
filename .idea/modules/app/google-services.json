@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "434373901926",
+    "firebase_url": "https://mocchichat.firebaseio.com",
+    "project_id": "mocchichat",
+    "storage_bucket": "mocchichat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:434373901926:android:403f7d3b026ef2f8f4f7a7",
+        "android_client_info": {
+          "package_name": "com.example.appchatdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "434373901926-6prg2f78fkeqh88dfu6bri0a437f79ka.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.appchatdemo",
+            "certificate_hash": "1db528b40be7ed4756c8808012866bfe6ccb29c3"
+          }
+        },
+        {
+          "client_id": "434373901926-ijdg5baf3shvhh7no8lg3h478qk2vr19.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiqB7P6FnPSBRtLNYI6j9Bxd4zqbOI6iM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "434373901926-ijdg5baf3shvhh7no8lg3h478qk2vr19.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
