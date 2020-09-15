@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Mochi</string>
+
+    <string name="font_quick_sand">fonts/quicksand.ttf</string>
+    <string name="font_quick_sand_light">fonts/quicksand_light.ttf</string>
+    <string name="font_quick_sand_medium">fonts/quicksand_medium.ttf</string>
+    <string name="font_quick_sand_bold">fonts/quicksand_bold.ttf</string>
+
+    <string name="lb_content_intro_1">Sed ut perspiciatis unde omnis iste rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.</string>
+
+    <string name="lb_not_register">Not registered yet?</string>
+    <string name="lb_sign_up">Sign up!</string>
+    <string name="lb_you_can_login_with">You can also login with …</string>
+    <string name="on_login">Login</string>
+    <string name="lb_remember">Remember me</string>
+    <string name="lb_user_name">Username</string>
+    <string name="lb_pwd">Password</string>
+
+
+    <string name="on_sign_up">Sign up</string>
+    <string name="lb_link_your_social">Link your social media profiles</string>
+    <string name="lb_enter_email">Enter your email ID</string>
+    <string name="lb_type_pwd">Type your password</string>
+    <string name="lb_re_pwd">Retype your password</string>
+    
+</resources>

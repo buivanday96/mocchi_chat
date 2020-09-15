@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="radius_card">10dp</dimen>
+    <dimen name="pageMargin">12dp</dimen>
+    <dimen name="offset">8dp</dimen>
+    <dimen name="pageMarginAndOffset">20dp</dimen>
+    <dimen name="pageMarginBottom">12dp</dimen>
+    <integer name="div_top">22</integer>
+
+    <integer name="padding_et">32</integer>
+</resources>

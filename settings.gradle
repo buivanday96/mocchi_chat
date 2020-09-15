@@ -1,0 +1,4 @@
+include ':utils'
+include ':viewplus'
+include ':app'
+rootProject.name = "AppChatDemo"

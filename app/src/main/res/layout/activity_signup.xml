@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_parent"
+    android:focusable="false"
+    android:focusableInTouchMode="false">
+
+    <mttdat.viewplus.TextViewPlus
+        android:id="@+id/div_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:customSize="1"
+        app:customFont="@string/font_quick_sand"
+        app:customPaddingTop="80"/>
+
+    <LinearLayout
+        android:id="@+id/layout_logo_anim"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/div_top">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="157"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="60">
+
+            <mttdat.viewplus.ImageAutoScale
+                android:id="@+id/iv_logo_anim"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:src="@drawable/logo_"
+                app:layout_constraintDimensionRatio="H,1:1"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="157"/>
+
+    </LinearLayout>
+
+    <mttdat.viewplus.TextViewPlus
+        android:id="@+id/lb_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lb_enter_email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_logo_anim"
+        app:customPaddingLeft="136"
+        app:customPaddingTop="54"
+        app:customPaddingBottom="16"
+        app:customFont="@string/font_quick_sand"
+        android:textColor="@color/colorBlackText"
+        app:customSize="16" />
+
+    <LinearLayout
+        android:id="@+id/layout_et_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/lb_username">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="69"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="237">
+
+            <mttdat.viewplus.EditTextPlus
+                android:id="@+id/et_username"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:customFont="@string/font_quick_sand"
+                android:background="@drawable/unselected_input_field"
+                android:textAlignment="textStart"
+                app:layout_constraintDimensionRatio="H,238:50"
+                app:customPaddingLeft="@integer/padding_et"
+                app:customPaddingRight="@integer/padding_et"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:maxLines="1"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="69"/>
+
+    </LinearLayout>
+
+    <mttdat.viewplus.TextViewPlus
+        android:id="@+id/lb_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lb_type_pwd"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_et_username"
+        app:customPaddingLeft="136"
+        app:customPaddingTop="24"
+        app:customPaddingBottom="16"
+        app:customFont="@string/font_quick_sand"
+        android:textColor="@color/colorBlackText"
+        app:customSize="16" />
+
+    <LinearLayout
+        android:id="@+id/layout_et_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/lb_password">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="69"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="237">
+
+            <mttdat.viewplus.EditTextPlus
+                android:id="@+id/et_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:customFont="@string/font_quick_sand"
+                android:background="@drawable/unselected_input_field"
+                android:textAlignment="textStart"
+                app:layout_constraintDimensionRatio="H,238:50"
+                app:customPaddingLeft="@integer/padding_et"
+                app:customPaddingRight="@integer/padding_et"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:focusable="true"
+                android:focusableInTouchMode="true"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="69"/>
+
+    </LinearLayout>
+
+    <mttdat.viewplus.TextViewPlus
+        android:id="@+id/lb_re_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lb_re_pwd"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_et_pwd"
+        app:customPaddingLeft="136"
+        app:customPaddingTop="24"
+        app:customPaddingBottom="16"
+        app:customFont="@string/font_quick_sand"
+        android:textColor="@color/colorBlackText"
+        app:customSize="16" />
+
+    <LinearLayout
+        android:id="@+id/layout_et_re_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/lb_re_pwd">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="69"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="237">
+
+            <mttdat.viewplus.EditTextPlus
+                android:id="@+id/et_re_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:customFont="@string/font_quick_sand"
+                android:background="@drawable/unselected_input_field"
+                android:textAlignment="textStart"
+                app:layout_constraintDimensionRatio="H,238:50"
+                app:customPaddingLeft="@integer/padding_et"
+                app:customPaddingRight="@integer/padding_et"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:focusable="true"
+                android:focusableInTouchMode="true"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="69"/>
+
+    </LinearLayout>
+
+    <mttdat.viewplus.TextViewPlus
+        android:id="@+id/div_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/layout_et_pwd"
+        app:customFont="@string/font_quick_sand"
+        app:customSize="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:customPaddingTop="24"/>
+
+    <mttdat.viewplus.TextViewPlus
+        android:id="@+id/div_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/layout_btn"
+        app:customFont="@string/font_quick_sand"
+        app:customSize="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:customPaddingTop="160"/>
+
+    <LinearLayout
+        android:id="@+id/layout_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/div_1">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="69"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="237">
+
+            <mttdat.viewplus.ImageAutoScale
+                android:id="@+id/btn_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:src="@drawable/button_big"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintDimensionRatio="H,237:47"
+                android:transitionName="btn_sign_up"/>
+
+            <mttdat.viewplus.TextViewPlus
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/on_sign_up"
+                android:textAllCaps="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                app:customFont="@string/font_quick_sand_bold"
+                app:customSize="16"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="69"/>
+
+    </LinearLayout>
+
+    <mttdat.viewplus.TextViewPlus
+        android:id="@+id/lb_login_with"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/layout_btn_social"
+        app:layout_constraintTop_toBottomOf="@id/layout_et_re_pwd"
+        android:text="@string/lb_link_your_social"
+        app:customFont="@string/font_quick_sand"
+        app:customPaddingBottom="0"
+        app:customPaddingTop="26"
+        app:customSize="16"
+        android:textColor="@color/colorBlackText"/>
+
+    <LinearLayout
+        android:id="@+id/layout_btn_social"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/layout_btn"
+        app:layout_constraintTop_toBottomOf="@id/lb_login_with">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="96"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="47">
+
+            <mttdat.viewplus.ImageAutoScale
+                android:id="@+id/btn_fb"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintDimensionRatio="H,1:1"
+                android:src="@drawable/btn_fb"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="18"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="47">
+
+            <mttdat.viewplus.ImageAutoScale
+                android:id="@+id/btn_twitter"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintDimensionRatio="H,1:1"
+                android:src="@drawable/btn_twitter"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="18"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="47">
+
+            <mttdat.viewplus.ImageAutoScale
+                android:id="@+id/btn_google"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintDimensionRatio="H,1:1"
+                android:src="@drawable/btn_gg"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="96"/>
+
+    </LinearLayout>
+
+    <mttdat.viewplus.TextViewPlus
+        android:id="@+id/div_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/tv_sign_up"
+        app:customFont="@string/font_quick_sand"
+        app:customSize="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:customPaddingTop="64"/>
+
+    <mttdat.viewplus.TextViewPlus
+        android:id="@+id/tv_sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Not registered yet? Sign up!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:customPaddingBottom="36"
+        app:customFont="@string/font_quick_sand_bold"
+        app:customSize="16"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
