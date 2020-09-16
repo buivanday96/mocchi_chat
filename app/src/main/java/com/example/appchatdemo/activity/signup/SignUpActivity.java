@@ -1,6 +1,9 @@
 package com.example.appchatdemo.activity.signup;
 
+import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -14,6 +17,8 @@ import androidx.core.content.ContextCompat;
 
 import com.example.appchatdemo.R;
 import com.example.appchatdemo.Utils.AnimUtils;
+import com.example.appchatdemo.Utils.DialogUtils;
+import com.example.appchatdemo.activity.login.LoginActivity;
 
 import java.util.Objects;
 
@@ -28,6 +33,17 @@ import mttdat.viewplus.ImageAutoScale;
 import mttdat.viewplus.TextViewPlus;
 
 public class SignUpActivity extends AppCompatActivity implements SignUpContract.View{
+
+    private static SignUpActivity singleton;
+
+    public static SignUpActivity getInstance() {
+        return singleton;
+    }
+
+    public SignUpActivity() {
+        super();
+        singleton = this;
+    }
 
     @BindView(R.id.et_username)
     EditTextPlus etUserName;
@@ -47,7 +63,13 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
     @BindView(R.id.layout_parent)
     ConstraintLayout layoutParent;
 
+    @BindView(R.id.tv_btn_sign_up)
+    TextViewPlus tvbtnSignUp;
+
     private SignUpPresenterImpl mPresenter;
+    private Dialog waitingDialog;
+
+    private boolean flagScreen;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,18 +80,28 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
     }
 
     private void init() {
-        AnimUtils.initAnimTransition(this);
+        //
+        //AnimUtils.initAnimEnterTransition(this);
         mPresenter = new SignUpPresenterImpl(this);
+        initIntent();
+    }
+
+    private void initIntent() {
+        Intent intent = getIntent();
+        flagScreen = intent.getBooleanExtra("goSignUp",false);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        AnimUtils.initAnimEnterTransition(this);
     }
 
     @Override
     public void onBackPressed() {
+        AnimUtils.initAnimTransition(this);
         super.onBackPressed();
+        //supportFinishAfterTransition();
     }
 
     @OnFocusChange({R.id.et_username, R.id.et_pwd,R.id.et_re_pwd})
@@ -104,6 +136,11 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         }
     }
 
+    @OnClick(R.id.btn_sign_up)
+    void onSignUp(View view){
+        onSignUp();
+    }
+
     //----------------------------------------------------------------------------------------------
 
     @Override
@@ -115,9 +152,11 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
     }
 
     @Override
-    public void signUpFail() {
+    public void signUpFail(Exception e) {
         showToast("Sign Up fail ! Please Try Again Later !");
         AnimUtils.animShake(btnSignUp,this);
+        hideWaitingDialog();
+        Log.i("zzz","sign up fail : " + e.getMessage());
     }
 
     @Override
@@ -125,7 +164,12 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         //save share pref email & pwd
         //show dialog success
         //close dialog goto sign in
-
+        hideWaitingDialog();
+        Log.i("zzz","sign up success");
+        Intent intent = new Intent(SignUpActivity.this,LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
+        finish();
     }
 
     @Override
@@ -143,6 +187,13 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
     }
 
     @Override
+    public void validPwdLength() {
+        showToast("Password should be at least 6 characters");
+        AnimUtils.animShake(etRePwd,this);
+        etPwd.setBackground(ContextCompat.getDrawable(this, R.drawable.invalidated_input_field));
+    }
+
+    @Override
     public void validRePwd() {
         showToast("Re-pwd don't match pwd");
         AnimUtils.animShake(etRePwd,this);
@@ -154,6 +205,17 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void showWaitingDialog() {
+        Log.i("zzz","start sign up");
+        waitingDialog = DialogUtils.createWaitingDialog(this);
+        waitingDialog.show();
+    }
 
-
+    @Override
+    public void hideWaitingDialog() {
+        if (waitingDialog.isShowing()){
+            waitingDialog.dismiss();
+        }
+    }
 }

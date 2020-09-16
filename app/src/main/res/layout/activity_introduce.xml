@@ -90,6 +90,7 @@
                 app:layout_constraintDimensionRatio="W,49:105"/>
 
             <mttdat.viewplus.TextViewPlus
+                android:id="@+id/tv_btn_sign_up"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
@@ -101,7 +102,8 @@
                 android:text="sign up"
                 app:customFont="@string/font_quick_sand_bold"
                 android:textAllCaps="true"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:transitionName="btn_sign_up"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

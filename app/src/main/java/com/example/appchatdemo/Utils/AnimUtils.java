@@ -11,6 +11,7 @@ import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
@@ -93,6 +94,14 @@ public class AnimUtils {
 
         activity.getWindow().setEnterTransition(fade);
         activity.getWindow().setExitTransition(fade);
+    }
+
+    public static void initAnimEnterTransition(Activity activity){
+        activity.getWindow().setEnterTransition(null);
+    }
+
+    public static void initAnimExitTransition(Activity activity){
+        activity.getWindow().setExitTransition(null);
     }
 
     public static void animShake(View view,Activity activity) {

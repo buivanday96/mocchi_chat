@@ -239,7 +239,7 @@
         app:customFont="@string/font_quick_sand"
         app:customSize="1"
         app:layout_constraintStart_toStartOf="parent"
-        app:customPaddingTop="160"/>
+        app:customPaddingTop="30"/>
 
     <LinearLayout
         android:id="@+id/layout_btn"
@@ -264,10 +264,10 @@
                 android:src="@drawable/button_big"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintDimensionRatio="H,237:47"
-                android:transitionName="btn_sign_up"/>
+                app:layout_constraintDimensionRatio="H,237:47" />
 
             <mttdat.viewplus.TextViewPlus
+                android:id="@+id/tv_btn_sign_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/on_sign_up"
@@ -279,7 +279,8 @@
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 app:customFont="@string/font_quick_sand_bold"
-                app:customSize="16"/>
+                app:customSize="16"
+                android:transitionName="btn_sign_up"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -301,7 +302,7 @@
         android:text="@string/lb_link_your_social"
         app:customFont="@string/font_quick_sand"
         app:customPaddingBottom="0"
-        app:customPaddingTop="26"
+        app:customPaddingTop="80"
         app:customSize="16"
         android:textColor="@color/colorBlackText"/>
 
@@ -309,8 +310,7 @@
         android:id="@+id/layout_btn_social"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/layout_btn"
-        app:layout_constraintTop_toBottomOf="@id/lb_login_with">
+        app:layout_constraintBottom_toTopOf="@id/div_2">
 
         <View
             android:layout_width="0dp"
@@ -390,7 +390,7 @@
         app:customFont="@string/font_quick_sand"
         app:customSize="1"
         app:layout_constraintStart_toStartOf="parent"
-        app:customPaddingTop="64"/>
+        app:customPaddingTop="48"/>
 
     <mttdat.viewplus.TextViewPlus
         android:id="@+id/tv_sign_up"

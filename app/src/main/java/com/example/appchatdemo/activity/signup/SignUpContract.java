@@ -4,19 +4,22 @@ public interface SignUpContract {
     interface Model{
         interface ListenerSignUp{
             void onSuccess();
-            void onFail();
+            void onFail(Exception e);
         }
         void resSignUp(String email,String pwd, ListenerSignUp listenerSignUp);
     }
 
     interface View{
         void onSignUp();
-        void signUpFail();
+        void signUpFail(Exception e);
         void signUpSuccess();
         void validEmail();
         void validPwd();
+        void validPwdLength();
         void validRePwd();
         void showToast(String message);
+        void showWaitingDialog();
+        void hideWaitingDialog();
     }
 
     interface Presenter{

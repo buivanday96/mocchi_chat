@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.transition.Fade;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,13 +19,15 @@ import com.airbnb.lottie.LottieDrawable;
 import com.example.appchatdemo.R;
 import com.example.appchatdemo.Utils.AnimUtils;
 import com.example.appchatdemo.activity.introduce.IntroduceActivity;
+import com.example.appchatdemo.activity.main.MainActivity;
+import com.google.firebase.auth.FirebaseAuth;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import mttdat.viewplus.ImageAutoScale;
 import mttdat.viewplus.TextViewPlus;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity implements SplashContract.View{
 
     @BindView(R.id.iv_logo)
     ImageAutoScale ivLogo;
@@ -44,6 +47,7 @@ public class SplashActivity extends AppCompatActivity {
     @BindView(R.id.iv_pattern)
     ImageAutoScale ivPattern;
 
+    private SplashPresenterImpl mPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,6 +55,7 @@ public class SplashActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
+        mPresenter = new SplashPresenterImpl(this);
         init();
     }
 
@@ -64,7 +69,6 @@ public class SplashActivity extends AppCompatActivity {
 
     private void init(){
         Fade fade = new Fade();
-        View decor = getWindow().getDecorView();
         //fade.excludeTarget(decor.findViewById(R.id.action))
         fade.excludeTarget(android.R.id.statusBarBackground,true);
         fade.excludeTarget(android.R.id.navigationBarBackground,true);
@@ -74,7 +78,6 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void initAnim() {
-
         AnimUtils.animTop(this,mLayoutTop);
         AnimUtils.animBot(this,tvLb);
 
@@ -89,7 +92,7 @@ public class SplashActivity extends AppCompatActivity {
                 startHideAnim(contentView);
 
             }
-        },3000);
+        },2000);
     }
 
     private void startHideAnim(final View contentView){
@@ -99,7 +102,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 //AnimUtils.animHide(SplashActivity.this,contentView);
                 AnimUtils.toggle(contentView,layoutParent,R.id.layout_logo_anim,false);
-                gotoLogin();
+                checkLogin();
             }
         });
     }
@@ -115,6 +118,44 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(intent, optionsCompat.toBundle());
             }
         },500);
+    }
+
+    private void gotoMain(){
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                startActivity(intent);
+                AnimUtils.initAnimExitTransition(SplashActivity.this);
+            }
+        },500);
+    }
+
+    @Override
+    public void checkLogin() {
+        mPresenter.requestCheckLoginAccount();
+    }
+
+    @Override
+    public void gotoIntroduceScreen() {
+
+        gotoLogin();
+    }
+
+    @Override
+    public void gotoMainScreen() {
+        showToast("Login Success");
+        gotoMain();
+    }
+
+    @Override
+    public void checkInternet() {
+
+    }
+
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(SplashActivity.this,message,Toast.LENGTH_SHORT).show();
     }
 
 }

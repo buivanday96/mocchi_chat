@@ -31,7 +31,16 @@ public class LoginPresenterImpl implements LoginContract.Presenter, LoginContrac
     }
 
     @Override
-    public void resFail() {
-        mView.logFail();
+    public void resFail(Exception e) {
+        mView.logFail(e);
+    }
+
+    @Override
+    public void handleRememberMe(boolean flag) {
+        if (flag){
+            mView.rememberMeChecked();
+            return;
+        }
+        mView.rememberMeNoChecked();
     }
 }

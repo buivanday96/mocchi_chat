@@ -22,11 +22,17 @@ public class SignUpPresenterImpl implements SignUpContract.Presenter, SignUpCont
             return;
         }
 
+        if (pwd.length() < 6){
+            mView.validPwdLength();
+            return;
+        }
+
         if (pwd.compareTo(rePwd) != 0){
             mView.validRePwd();
             return;
         }
 
+        mView.showWaitingDialog();
         mModel.resSignUp(email,pwd,this);
     }
 
@@ -36,7 +42,7 @@ public class SignUpPresenterImpl implements SignUpContract.Presenter, SignUpCont
     }
 
     @Override
-    public void onFail() {
-        mView.signUpFail();
+    public void onFail(Exception e) {
+        mView.signUpFail(e);
     }
 }

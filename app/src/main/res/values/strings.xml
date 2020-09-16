@@ -4,7 +4,7 @@
     <string name="font_quick_sand">fonts/quicksand.ttf</string>
     <string name="font_quick_sand_light">fonts/quicksand_light.ttf</string>
     <string name="font_quick_sand_medium">fonts/quicksand_medium.ttf</string>
-    <string name="font_quick_sand_bold">fonts/quicksand_bold.ttf</string>
+    <string name="font_quick_sand_bold">fonts/quicksand_bold.xml</string>
 
     <string name="lb_content_intro_1">Sed ut perspiciatis unde omnis iste rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.</string>
 

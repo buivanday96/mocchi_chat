@@ -31,6 +31,7 @@ import com.example.appchatdemo.R;
 import com.example.appchatdemo.Utils.AnimUtils;
 import com.example.appchatdemo.Utils.SharePrefUtils;
 import com.example.appchatdemo.activity.introduce.IntroduceActivity;
+import com.example.appchatdemo.activity.main.MainActivity;
 import com.example.appchatdemo.activity.signup.SignUpActivity;
 import com.example.appchatdemo.activity.splash.SplashActivity;
 
@@ -50,6 +51,17 @@ import mttdat.viewplus.TextViewPlus;
 import mttdat.viewplus.TouchableSpan;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
+
+    private static LoginActivity singleton;
+
+    public static LoginActivity getInstance() {
+        return singleton;
+    }
+
+    public LoginActivity() {
+        super();
+        singleton = this;
+    }
 
     @BindView(R.id.layout_parent)
     ConstraintLayout layoutParent;
@@ -87,16 +99,21 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     protected void onResume() {
         super.onResume();
         tvSignUpTemp.setVisibility(View.INVISIBLE);
+        AnimUtils.initAnimTransition(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        supportFinishAfterTransition();
     }
 
     private void init() {
         mPresenter = new LoginPresenterImpl(this);
         mSharePrefUtils = new SharePrefUtils(this);
         initTextSignUp();
-        AnimUtils.initAnimTransition(this);
         rememberMe();
     }
-
 
     private void initTextSignUp() {
         String myString = getString(R.string.lb_not_register) + " " + getString(R.string.lb_sign_up);
@@ -132,6 +149,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             etPwd.setText(pwd);
             etUsername.setSelection(userName.length());
             etPwd.setSelection(pwd.length());
+            switchRemember.setChecked(true);
             return;
         }
         etUsername.setText("");
@@ -139,16 +157,12 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     void onSignUp() {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
-                ActivityOptionsCompat optionsCompat =
-                        ActivityOptionsCompat.makeSceneTransitionAnimation
-                                (LoginActivity.this,tvSignUpTemp, ViewCompat.getTransitionName(tvSignUpTemp));
-                startActivity(intent, optionsCompat.toBundle());
-            }
-        });
+        Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+        ActivityOptionsCompat optionsCompat =
+                ActivityOptionsCompat.makeSceneTransitionAnimation
+                        (LoginActivity.this,tvSignUpTemp, ViewCompat.getTransitionName(tvSignUpTemp));
+        startActivity(intent, optionsCompat.toBundle());
+        //AnimUtils.initAnimExitTransition(this);
     }
 
     @OnClick(R.id.btn_login)
@@ -220,11 +234,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         mSharePrefUtils.putBoolean("rememberMe", false);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
-
     //----------------------------------------------------------------------------------------------
 
     @Override
@@ -274,21 +283,39 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     public void logSuccess() {
         showToast("Login success");
-        if (switchRemember.isChecked()) {
-            saveSharePref();
-            return;
-        }
-        deleteSharePref();
+        checkRememberMe(switchRemember.isChecked());
+        gotoMain();
+    }
+
+    private void gotoMain(){
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 
     @Override
-    public void logFail() {
+    public void logFail(Exception e) {
         showToast("Login fail");
+        Log.e("logFail",e.getMessage());
         animShake(btnLogin);
     }
 
     @Override
     public void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void checkRememberMe(boolean flag) {
+        mPresenter.handleRememberMe(flag);
+    }
+
+    @Override
+    public void rememberMeChecked() {
+        saveSharePref();
+    }
+
+    @Override
+    public void rememberMeNoChecked() {
+        deleteSharePref();
     }
 }
